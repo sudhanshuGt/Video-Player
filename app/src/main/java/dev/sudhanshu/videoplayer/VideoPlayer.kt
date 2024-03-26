@@ -20,7 +20,7 @@ interface VideoNotVisibleListener {
     fun onVideoNotVisible()
 }
 
-class HomeFeedVideoView(context: Context, attrs: AttributeSet?) : VideoView(context, attrs) {
+public class VideoPlayer(context: Context, attrs: AttributeSet?) : VideoView(context, attrs) {
 
     private var isVisibleToUser = false
     var isMuted = false
@@ -47,7 +47,7 @@ class HomeFeedVideoView(context: Context, attrs: AttributeSet?) : VideoView(cont
 
         viewTreeObserver.addOnPreDrawListener {
             val previousVisible = isVisibleToUser
-            isVisibleToUser = isViewVisible(this@HomeFeedVideoView)
+            isVisibleToUser = isViewVisible(this@VideoPlayer)
             if (previousVisible && !isVisibleToUser) {
                 videoNotVisibleListener?.onVideoNotVisible()
             }
